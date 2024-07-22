@@ -1,12 +1,39 @@
-const Command = require('../command.js');
+const Command = require("../command.js");
 
 // NOTE: If at any time, you want to focus on the output from a single test, feel free to comment out all the others.
 //       However, do NOT edit the grading tests for any reason and make sure to un-comment out your code to get the autograder to pass.
 
-describe("Command class", function() {
-
-  it("throws error if command type is NOT passed into constructor as the first parameter", function() {
-    expect( function() { new Command();}).toThrow(new Error('Command type required.'));
+describe("Command class", function () {
+  it("throws error if command type is NOT passed into constructor as the first parameter", function () {
+    expect(function () {
+      new Command();
+    }).toThrow(new Error("Command type required."));
   });
-
+  it("constructor sets command type", function () {
+    let constructor = new Command("hey yall");
+    expect(constructor.commandType).toBe("hey yall");
+  });
+  it("constructor sets a value passed in as the 2nd argument", function () {
+    let constructor = new Command("hey yall", 2000);
+    expect(constructor.value).toBe(2000);
+  });
 });
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//Test 1:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//Test 2: Checks if the the property command type is in the first argument
+//Structure of unit Test:
+//it(...)
+//Code: new Command(commandType)
+//Expectation: expect().toBe()
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//Test 3: Checks if the property value is passed in the second argument
+//Structure of unit test:
+//It()
+//Code:
+//Expectation:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
