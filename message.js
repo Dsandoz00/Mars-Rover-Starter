@@ -6,9 +6,7 @@ class Message {
       this.name = "Gerald";
       if (!name) {
          throw Error("name required");
-      //--------------------------------------------------------------------------------------------------------
-      //Within the name property I added the conditions set by the matching unit test stating how an error will be thrown if name isn't the first argument
-      //--------------------------------------------------------------------------------------------------------
+     
       }
       this.commands = commands;
    }
@@ -19,9 +17,6 @@ let message = new Message('Gerald', commands);
 
 
 
-//----------------------------------------------------------------------------------------------------------------
-//Message Object: Bundling commands to send to the rover
-//The commands argument contains an array of objects from the command class
-//----------------------------------------------------------------------------------------------------------------
+
 
 module.exports = Message;

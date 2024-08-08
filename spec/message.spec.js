@@ -16,7 +16,7 @@ describe("Message class", function () {
   });
   it("contains a commands array passed into the constructor as the 2nd argument", function () {
     let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
-    let constructor = new Message("Gerald", "commands");
-    expect(constructor.commands).toContain("commands");
+    let constructor = new Message("Gerald", commands);
+    expect(constructor.commands).toBe(commands);
   });
 });
