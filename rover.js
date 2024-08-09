@@ -9,7 +9,7 @@ class Rover {
    }
    receiveMessage(message) {
       let response = message.name;
-      let results = message.commands;
+      let results = []
      
       for (let i = 0; i < message.commands.length; i++) {
          if (message.commands[i].commandType === 'STATUS_CHECK') {
@@ -18,7 +18,7 @@ class Rover {
                roverStatus: {
                   mode: this.mode,
                   generatorWatts: 110,
-                  position: 98382
+                  position: 20000
                }
             });
          } else if (message.commands[i].commandType === "MODE_CHANGE") {

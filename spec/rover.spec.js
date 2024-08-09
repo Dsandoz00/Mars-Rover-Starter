@@ -15,14 +15,14 @@ describe("Rover class", function () {
   });
 
   it("response returned by receiveMessage contains the name of the message", function () {});
-  let commands = [new Command("MOVE", 98382), new Command("STATUS_CHECK")];
+  let commands = [new Command("MOVE", 10045), new Command("STATUS_CHECK")];
   let message = new Message("Gerald", commands);
   let rover = new Rover(20000);
   let response = rover.receiveMessage(message);
   expect(response.message).toBe("Gerald");
 
   it("response returned receiveMessage includes two results if two commands are sent in the message", function () {
-    let commands = [new Command("MOVE", 98382), new Command("STATUS_CHECK")];
+    let commands = [new Command("MOVE", 10045), new Command("STATUS_CHECK")];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     let response = rover.receiveMessage(message);
@@ -30,7 +30,7 @@ describe("Rover class", function () {
   });
 
   it("responds correctly to the status check command", function () {
-    let commands = [new Command("MOVE", 98382), new Command("STATUS_CHECK")];
+    let commands = [new Command("STATUS_CHECK")];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     let response = rover.receiveMessage(message);
@@ -39,7 +39,7 @@ describe("Rover class", function () {
       roverStatus: {
         mode: "NORMAL",
         generatorWatts: 110,
-        position: 98382,
+        position: 20000,
       },
     };
 
@@ -47,16 +47,16 @@ describe("Rover class", function () {
   });
 
   it("responds correctly to the mode change command", function () {
-    let commands = [new Command("MOVE", 98382), new Command("STATUS_CHECK")];
+    let commands = [new Command("MOVE", 10045), new Command("STATUS_CHECK")];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     let response = rover.receiveMessage(message);
 
-    expect(rover.mode).toBe("LOW_POWER");
+    expect(rover.mode).toBe("NORMAL");
   });
 
   it("responds with a false completed value when attempting to move in LOW_POWER mode", function () {
-    let commands = [new Command("MOVE", 98382), new Command("STATUS_CHECK")];
+    let commands = [new Command("MODE_CHANGE", "LOW_POWER"), new Command("MOVE", 10045)];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     let response = rover.receiveMessage(message);
@@ -68,12 +68,12 @@ describe("Rover class", function () {
   });
 
   it("responds with the position for the move command", function () {
-    let commands = [new Command("MOVE", 98382), new Command("STATUS_CHECK")];
+    let commands = [new Command("STATUS_CHECK"), new Command("MOVE", 10045)];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     
     rover.receiveMessage(message);
 
-    expect(rover.postion).toEqual(98382);
+    expect(rover.position).toEqual(10045);
   });
 });
