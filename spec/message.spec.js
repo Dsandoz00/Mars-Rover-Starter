@@ -11,8 +11,8 @@ describe("Message class", function () {
     }).toThrow(new Error("name required"));
   });
   it("constructor sets name", function () {
-    let constuctor = new Message("Gerald");
-    expect(constuctor.name).toBe("Gerald");
+    let constuctor = new Message("two commands");
+    expect(constuctor.name).toBe("two commands");
   });
   it("contains a commands array passed into the constructor as the 2nd argument", function () {
     let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];

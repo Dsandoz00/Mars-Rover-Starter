@@ -5,10 +5,9 @@ class Rover {
    constructor(position, mode = "NORMAL", generatorWatts = 110) {
       this.position = position;
       this.mode = 'NORMAL';
-      this.generatorWatts = 110;
+      this.generatorWatts = this.generatorWatts;
    }
    receiveMessage(message) {
-      let response = message.name;
       let results = []
      
       for (let i = 0; i < message.commands.length; i++) {
@@ -17,8 +16,8 @@ class Rover {
                completed: true,
                roverStatus: {
                   mode: this.mode,
-                  generatorWatts: 110,
-                  position: 20000
+                  generatorWatts: this.generatorWatts,
+                  position: this.position
                }
             });
          } else if (message.commands[i].commandType === "MODE_CHANGE") {
