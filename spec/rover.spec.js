@@ -19,7 +19,7 @@ describe("Rover class", function () {
   let message = new Message("Gerald", commands);
   let rover = new Rover(20000);
   let response = rover.receiveMessage(message);
-  expect(response.message).toBe("two commands");
+  expect(response.message).toBe("Gerald");
 
   it("response returned receiveMessage includes two results if two commands are sent in the message", function () {
     let commands = [new Command("MOVE", 10045), new Command("STATUS_CHECK")];

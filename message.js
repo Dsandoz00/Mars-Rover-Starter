@@ -3,7 +3,7 @@ const Command = require("./command");
 class Message {
    // Write code here!
    constructor(name, commands) {
-      this.name = "two commands";
+      this.name = name;
       if (!name) {
          throw Error("name required");
      
