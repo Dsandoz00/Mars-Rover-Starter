@@ -47,12 +47,12 @@ describe("Rover class", function () {
   });
 
   it("responds correctly to the mode change command", function () {
-    let commands = [new Command("MOVE", 10045), new Command("STATUS_CHECK")];
+    let commands = [new Command("MOVE", 10045), new Command("MODE_CHANGE", "LOWER_POWER")];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     let response = rover.receiveMessage(message);
 
-    expect(rover.mode).toBe("NORMAL");
+    expect(rover.mode).toBe("LOWER_POWER");
   });
 
   it("responds with a false completed value when attempting to move in LOW_POWER mode", function () {
@@ -68,7 +68,7 @@ describe("Rover class", function () {
   });
 
   it("responds with the position for the move command", function () {
-    let commands = [new Command("STATUS_CHECK"), new Command("MOVE", 10045)];
+    let commands = [new Command("MOVE", 10045)];
     let message = new Message("Gerald", commands);
     let rover = new Rover(20000);
     
